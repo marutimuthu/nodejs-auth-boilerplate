@@ -2,15 +2,9 @@ require('dotenv').config()
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-const Device = db.device;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
-
-// Instantiate Haikunator without options
-var Haikunator = require('haikunator')
-var haikunator = new Haikunator()
-// console.log(haikunator.haikunate({ tokenLength: 0 })) // => "cold-wildflower")
 
 exports.signup = (req, res) => {
   const user = new User({

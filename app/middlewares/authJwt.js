@@ -1,15 +1,11 @@
 const jwt = require("jsonwebtoken");
-require('dotenv').config()
+require("dotenv").config();
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
 verifyToken = (req, res, next) => {
-   let token = req.headers["x-access-token"];
- // let token = req.params.id;
-  //console.log(req.params.id);
-  //console.log(res);
-  console.log(token);
+  let token = req.headers["x-access-token"];
   if (!token) {
     return res.status(403).send({ message: "No token provided!" });
   }
@@ -32,7 +28,7 @@ isAdmin = (req, res, next) => {
 
     Role.find(
       {
-        _id: { $in: user.roles }
+        _id: { $in: user.roles },
       },
       (err, roles) => {
         if (err) {
@@ -63,7 +59,7 @@ isModerator = (req, res, next) => {
 
     Role.find(
       {
-        _id: { $in: user.roles }
+        _id: { $in: user.roles },
       },
       (err, roles) => {
         if (err) {
@@ -88,6 +84,6 @@ isModerator = (req, res, next) => {
 const authJwt = {
   verifyToken,
   isAdmin,
-  isModerator
+  isModerator,
 };
 module.exports = authJwt;
