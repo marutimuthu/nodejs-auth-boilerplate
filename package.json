@@ -5,9 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "NODE_ENV=dev nodemon app/index.js",
-    "start": "NODE_ENV=prod node app/index.js",
-    "data:import": "node seeder",
-    "data:destroy": "node seeder -d"
+    "start": "NODE_ENV=prod node app/index.js"
   },
   "repository": {
     "type": "git",
